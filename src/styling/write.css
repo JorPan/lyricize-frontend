@@ -6,3 +6,48 @@ body {
 .write-head {
   font-family: "Roboto Mono", monospace;
 }
+
+.form-label {
+  font-family: "Roboto Mono", monospace;
+}
+
+.form-card {
+  margin: 30px;
+  font-family: "Roboto Mono", monospace;
+  height: 500px;
+  width: 100%;
+  border: 2px solid rgb(255, 129, 129);
+  border-radius: 20px;
+}
+
+.form-button {
+  font-family: "Roboto Mono", monospace;
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.hide-button {
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid black;
+  padding: 2px;
+  width: 70px;
+  border-radius: 10px;
+}
+.top-form {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -15px;
+}
+
+.helper {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+  margin-top: -50px;
+}
+
+.helper:hover {
+  cursor: pointer;
+}

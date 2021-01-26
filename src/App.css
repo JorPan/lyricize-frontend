@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap");
 .App {
   text-align: center;
 }
@@ -35,4 +37,49 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.header {
+  font-family: "Hachi Maru Pop", cursive;
+  background-color: #a9ebff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0 3px 3px 3px #3586ff;
+}
+
+.logo {
+  color: #3586ff;
+  font-size: 47px;
+  margin-left: 25px;
+  font-weight: bolder;
+  text-decoration: underline;
+  text-shadow: 1px 1px #5e2525;
+}
+
+.links {
+  font-size: 17px;
+  display: flex;
+  flex-direction: row;
+  padding: 25px;
+}
+
+.links > link {
+  margin-left: 47px;
+}
+
+.header-link {
+  color: #3586ff;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30px;
+}
+
+.nav {
+  display: flex;
+  margin-right: 100px;
+}
+
+.about-title {
+  font-family: "Roboto Mono", monospace;
 }

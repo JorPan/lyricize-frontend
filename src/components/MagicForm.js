@@ -1,24 +1,43 @@
 import React, { Component } from "react";
+const initialState = {
+  isShowing: false,
+  rhymesWith: "",
+  closeRhymes: "",
+  similarTo: "",
+  triggeredBy: "",
+  startsWith: "",
+  endsWith: "",
+  soundsLike: "",
+  speltLike: "",
+  adjectives: "",
+  nouns: "",
+  relationSort: "",
+  oftenFollows: "",
+  oftenProceeds: "",
+  syllableCount: "",
+  words: [],
+};
+
+let a;
+const queryTerms = {
+  rhymesWith: "rel_rhy",
+  closeRhymes: "rel_nry",
+  similarTo: "ml",
+  triggeredBy: "rel_trg",
+  startsWith: `sp=${a}*`,
+  endsWith: `sp=*${a}`,
+  soundsLike: "sl",
+  speltLike: "sp",
+  adjectives: "rel_jjb",
+  nouns: "rel_jja",
+  relationSort: "topic",
+  oftenFollows: "lc",
+  oftenProceeds: "rc",
+  syllableCount: "mds",
+};
 
 export default class MagicForm extends Component {
-  state = {
-    isShowing: false,
-    rhymesWith: "",
-    closeRhymes: "",
-    similarTo: "",
-    triggeredBy: "",
-    startsWith: "",
-    endsWith: "",
-    soundsLike: "",
-    speltLike: "",
-    adjectives: "",
-    nouns: "",
-    relationSort: "",
-    oftenFollows: "",
-    oftenProceeds: "",
-    syllableCount: "",
-    words: [],
-  };
+  state = initialState;
 
   showForm = () => {
     let showState = !this.state.isShowing;
@@ -44,12 +63,30 @@ export default class MagicForm extends Component {
       syllableCount,
     } = this.state;
 
-    console.log(
-      `https://api.datamuse.com/words?rel_rhy=${rhymesWith}&rel_nry=${closeRhymes}&ml=${similarTo}&rel_trg=${triggeredBy}&sp=${startsWith}*&sp=*${endsWith}&rel_hom=${soundsLike}&sp=${speltLike}&rel_jja=${nouns}&rel_jjb=${adjectives}&topics=${relationSort}&lc=${oftenFollows}&rc=${oftenProceeds}&mds=${syllableCount}`
-    );
+    let stateArray = [
+      rhymesWith,
+      closeRhymes,
+      similarTo,
+      triggeredBy,
+      startsWith,
+      endsWith,
+      soundsLike,
+      speltLike,
+      adjectives,
+      nouns,
+      relationSort,
+      oftenFollows,
+      oftenProceeds,
+      syllableCount,
+    ];
+
+    stateArray.map((element) => console.log(element));
+    // console.log(
+    //   `https://api.datamuse.com/words?rel_rhy=${rhymesWith}&rel_nry=${closeRhymes}&ml=${similarTo}&rel_trg=${triggeredBy}&sp=${startsWith}*&sp=*${endsWith}&rel_hom=${soundsLike}&sp=${speltLike}&rel_jja=${nouns}&rel_jjb=${adjectives}&topics=${relationSort}&lc=${oftenFollows}&rc=${oftenProceeds}&mds=${syllableCount}`
+    // );
 
     // fetch(
-    //   `https://api.datamuse.com/words?rel_rhy=${rhymesWith}&rel_nry=${closeRhymes}ml=${similarTo}&rel_trg=${triggeredBy}&sp=${startsWith}*&sp=*${endsWith}&rel_hom=${soundsLike}&sp=${speltLike}&rel_jja=${nouns}&rel_jjb=${adjectives}&topics=${relationSort}&lc=${oftenFollows}&rc=${oftenProceeds}`
+    //   `https://api.datamuse.com/words?rel_rhy=${rhymesWith}&rel_nry=${closeRhymes}&ml=${similarTo}&rel_trg=${triggeredBy}&sp=${startsWith}*&sp=*${endsWith}&rel_hom=${soundsLike}&sp=${speltLike}&rel_jja=${nouns}&rel_jjb=${adjectives}&topics=${relationSort}&lc=${oftenFollows}&rc=${oftenProceeds}&mds=${syllableCount}`
     // )
     //   .then((response) => response.json())
     //   .then(console.log);

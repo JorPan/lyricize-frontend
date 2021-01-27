@@ -8,8 +8,10 @@ export default class Write extends Component {
     return (
       <div>
         <h1 className="write-head">Let's Write a Song</h1>
-        <MagicForm />
-        <LyricForm />
+        <div className="lyric-form-section">
+          <MagicForm />
+          <LyricForm />
+        </div>
       </div>
     );
   }

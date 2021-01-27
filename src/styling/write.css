@@ -15,7 +15,7 @@ body {
   margin: 30px;
   font-family: "Roboto Mono", monospace;
   height: 300px;
-  width: 95vw;
+  width: 70vw;
   border: 2px solid rgb(255, 129, 129);
   border-radius: 20px;
 }
@@ -75,4 +75,21 @@ body {
 .need-a-hand {
   display: flex;
   justify-content: flex-end;
+}
+
+.lyric-form {
+  display: inline-block;
+}
+
+.lyric-row {
+  width: 70vw;
+}
+
+.lyric-form-section {
+  display: inline-block;
+}
+
+.add-row-button {
+  width: 30px;
+  border-radius: 3px;
 }

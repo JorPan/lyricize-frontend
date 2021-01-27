@@ -7,8 +7,11 @@ export default class SongForm extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.addLine}>+</button>
+      <div className="lyric-form">
+        <input className="lyric-row" />
+        <button className="add-row-button" onClick={this.addLine}>
+          +
+        </button>
       </div>
     );
   }

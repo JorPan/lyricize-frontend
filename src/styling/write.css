@@ -14,7 +14,6 @@ body {
 .form-card {
   margin: 30px;
   font-family: "Roboto Mono", monospace;
-  height: 300px;
   width: 70vw;
   border: 2px solid rgb(255, 129, 129);
   border-radius: 20px;
@@ -78,11 +77,41 @@ body {
 }
 
 .lyric-form {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.song-title-input {
+  width: 50vw;
+  margin-bottom: 1rem;
+  height: 2rem;
+  font-size: 200%;
+  text-align: center;
 }
 
 .lyric-row {
+  display: flex;
+  flex-direction: row;
   width: 70vw;
+  margin-bottom: 0.5rem;
+}
+
+.lyric-row-input {
+  width: 60vw;
+  height: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dragger {
+  border: 1px solid black;
+  margin: auto;
+  margin-right: 0rem;
+  border-radius: 2px;
+}
+
+.clear-line-button {
+  height: 1.5rem;
 }
 
 .lyric-form-section {
@@ -90,6 +119,17 @@ body {
 }
 
 .add-row-button {
-  width: 30px;
+  width: 80px;
+  height: 40px;
   border-radius: 3px;
+}
+
+.suggestions {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 1rem;
+}
+
+.suggested {
+  margin: 0.5rem;
 }

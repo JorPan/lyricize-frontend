@@ -16,6 +16,7 @@ const initialState = {
   oftenProceeds: "",
   syllableCount: "",
   words: [],
+  wordData: "",
 };
 
 // let a;
@@ -123,12 +124,25 @@ export default class MagicForm extends Component {
 
     fetch(queryString.join(""))
       .then((response) => response.json())
-      .then((words) => console.log(words));
+      .then((words) => this.setState({ words: words }));
   };
 
   handleChange = (event) => {
     let { name, value } = event.target;
     this.setState({ [name]: value });
+  };
+
+  defineWord = (event) => {
+    let wordToSearch = event.target.innerText;
+    fetch(`https://wordsapiv1.p.rapidapi.com/words/${wordToSearch}`, {
+      method: "GET",
+      headers: {
+        "x-rapidapi-key": "858828029fmsh37b23938027c823p15044ejsn9d489660ef51",
+        "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+      },
+    })
+      .then((response) => response.json())
+      .then((wordData) => console.log(wordData));
   };
 
   render() {
@@ -277,10 +291,23 @@ export default class MagicForm extends Component {
                   placeholder="Syllable count..."
                   onChange={this.handleChange}
                 />
-                <input className="input" type="submit" value="Search" />
+                <input className="input" type="submit" value="Search / Clear" />
               </div>
               <div></div>
             </form>
+            <section className="suggestions">
+              {this.state.words.map((word) => {
+                return (
+                  <p
+                    onClick={this.defineWord}
+                    className="suggested"
+                    key={word.id}
+                  >
+                    {word.word}
+                  </p>
+                );
+              })}
+            </section>
           </div>
         )}
       </div>

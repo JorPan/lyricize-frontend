@@ -20,10 +20,25 @@ export default class Songs extends Component {
     event.preventDefault();
     let artist = this.state.artistInput;
     let song = this.state.songInput.split(" ").join("+");
-    console.log(`https://api.lyrics.ovh/v1/${artist}/${song}`);
     fetch(`https://api.lyrics.ovh/v1/${artist}/${song}`)
       .then((response) => response.json())
-      .then((lyrics) => this.setState({ lyrics: lyrics.lyrics }));
+      .then((lyrics) => {
+        let parsedLyrics = lyrics.lyrics.split("\n").map((i) => {
+          return (
+            <p className="lyric-row" key={i.id}>
+              {i}
+            </p>
+          );
+        });
+        this.setState({ lyrics: parsedLyrics });
+      });
+  };
+
+  saveSong = () => {
+    let songLyrics = [];
+    console.log(this.state.artistInput, this.state.songInput);
+    this.state.lyrics.map((lyric) => songLyrics.push(lyric.props.children));
+    console.log(songLyrics);
   };
 
   render() {
@@ -53,7 +68,11 @@ export default class Songs extends Component {
         </form>
         {this.state.lyrics !== "" ? (
           <div className="results">
-            <p className="lyrics">{this.state.lyrics}</p>
+            <text className="lyrics">{this.state.lyrics}</text>
+            <p></p>
+            <button className="save-favorite-button" onClick={this.saveSong}>
+              Save to My Favorites
+            </button>
           </div>
         ) : null}
       </div>

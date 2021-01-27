@@ -10,7 +10,7 @@ export default function Header() {
       <div className="links">
         <div className="nav">
           <Link className="header-link" to="/songs">
-            find lyrics
+            search songs
           </Link>
           <Link className="header-link" to="/lyrics">
             my lyrics

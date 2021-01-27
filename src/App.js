@@ -4,6 +4,7 @@ import Header from "./containers/Header";
 import About from "./pages/About";
 import Write from "./pages/Write";
 import Songs from "./pages/Songs";
+import Lyrics from "./pages/Lyrics";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/" component={About} />
         <Route exact path="/write" component={Write} />
         <Route exact path="/songs" component={Songs} />
+        <Route exact path="/lyrics" component={Lyrics} />
       </Switch>
     </div>
   );

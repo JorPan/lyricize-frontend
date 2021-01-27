@@ -18,23 +18,23 @@ const initialState = {
   words: [],
 };
 
-let a;
-const queryTerms = {
-  rhymesWith: "rel_rhy",
-  closeRhymes: "rel_nry",
-  similarTo: "ml",
-  triggeredBy: "rel_trg",
-  startsWith: `sp=${a}*`,
-  endsWith: `sp=*${a}`,
-  soundsLike: "sl",
-  speltLike: "sp",
-  adjectives: "rel_jjb",
-  nouns: "rel_jja",
-  relationSort: "topic",
-  oftenFollows: "lc",
-  oftenProceeds: "rc",
-  syllableCount: "mds",
-};
+// let a;
+// const queryTerms = {
+//   rhymesWith: "rel_rhy",
+//   closeRhymes: "rel_nry",
+//   similarTo: "ml",
+//   triggeredBy: "rel_trg",
+//   startsWith: `sp=${a}*`,
+//   endsWith: `sp=*${a}`,
+//   soundsLike: "sl",
+//   speltLike: "sp",
+//   adjectives: "rel_jjb",
+//   nouns: "rel_jja",
+//   relationSort: "topic",
+//   oftenFollows: "lc",
+//   oftenProceeds: "rc",
+//   syllableCount: "mds",
+// };
 
 export default class MagicForm extends Component {
   state = initialState;
@@ -63,38 +63,71 @@ export default class MagicForm extends Component {
       syllableCount,
     } = this.state;
 
-    let stateArray = [
-      rhymesWith,
-      closeRhymes,
-      similarTo,
-      triggeredBy,
-      startsWith,
-      endsWith,
-      soundsLike,
-      speltLike,
-      adjectives,
-      nouns,
-      relationSort,
-      oftenFollows,
-      oftenProceeds,
-      syllableCount,
-    ];
+    let queryString = ["http://api.datamuse.com/words?"];
 
-    stateArray.map((element) => console.log(element));
-    // console.log(
-    //   `https://api.datamuse.com/words?rel_rhy=${rhymesWith}&rel_nry=${closeRhymes}&ml=${similarTo}&rel_trg=${triggeredBy}&sp=${startsWith}*&sp=*${endsWith}&rel_hom=${soundsLike}&sp=${speltLike}&rel_jja=${nouns}&rel_jjb=${adjectives}&topics=${relationSort}&lc=${oftenFollows}&rc=${oftenProceeds}&mds=${syllableCount}`
-    // );
+    if (rhymesWith.length > 0) {
+      queryString.push(`rel_rhy=${rhymesWith}&`);
+    }
 
-    // fetch(
-    //   `https://api.datamuse.com/words?rel_rhy=${rhymesWith}&rel_nry=${closeRhymes}&ml=${similarTo}&rel_trg=${triggeredBy}&sp=${startsWith}*&sp=*${endsWith}&rel_hom=${soundsLike}&sp=${speltLike}&rel_jja=${nouns}&rel_jjb=${adjectives}&topics=${relationSort}&lc=${oftenFollows}&rc=${oftenProceeds}&mds=${syllableCount}`
-    // )
-    //   .then((response) => response.json())
-    //   .then(console.log);
+    if (closeRhymes.length > 0) {
+      queryString.push(`rel_nry=${closeRhymes}&`);
+    }
+
+    if (similarTo.length > 0) {
+      queryString.push(`ml=${similarTo}&`);
+    }
+
+    if (triggeredBy.length > 0) {
+      queryString.push(`rel_trg=${triggeredBy}&`);
+    }
+
+    if (startsWith.length > 0) {
+      queryString.push(`sp=${startsWith}*`);
+    }
+
+    if (endsWith.length > 0) {
+      queryString.push(`sp=*${endsWith}&`);
+    }
+
+    if (soundsLike.length > 0) {
+      queryString.push(`sl=${soundsLike}&`);
+    }
+
+    if (speltLike.length > 0) {
+      queryString.push(`sp=${speltLike}&`);
+    }
+
+    if (adjectives.length > 0) {
+      queryString.push(`rel_jjb=${adjectives}&`);
+    }
+
+    if (nouns.length > 0) {
+      queryString.push(`rel_jja=${nouns}&`);
+    }
+
+    if (relationSort.length > 0) {
+      queryString.push(`topic=${relationSort}&`);
+    }
+
+    if (oftenFollows.length > 0) {
+      queryString.push(`lc=${oftenFollows}&`);
+    }
+
+    if (oftenProceeds.length > 0) {
+      queryString.push(`rc=${oftenProceeds}&`);
+    }
+
+    if (syllableCount > 0) {
+      queryString.push(`mds=${syllableCount}&`);
+    }
+
+    fetch(queryString.join(""))
+      .then((response) => response.json())
+      .then((words) => console.log(words));
   };
 
   handleChange = (event) => {
     let { name, value } = event.target;
-    console.log(name, value);
     this.setState({ [name]: value });
   };
 
@@ -117,7 +150,7 @@ export default class MagicForm extends Component {
     } = this.state;
     return (
       <div>
-        {this.state.isShowing == false ? (
+        {this.state.isShowing === false ? (
           <div className="need-a-hand">
             <h4 className="form-button" onClick={this.showForm}>
               Need a hand?
@@ -145,7 +178,7 @@ export default class MagicForm extends Component {
                   value={closeRhymes}
                   className="input"
                   type="text"
-                  placeholder="Close rhymes..."
+                  placeholder="Near rhymes..."
                   onChange={this.handleChange}
                 />
                 <input

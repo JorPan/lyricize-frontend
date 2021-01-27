@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import "../styling/Songs.css";
+const initialState = {
+  artistInput: "",
+  songInput: "",
+  lyrics: "",
+  saved: "",
+};
 
 export default class Songs extends Component {
-  state = {
-    artistInput: "",
-    songInput: "",
-    lyrics: "",
-  };
+  state = initialState;
 
   handleArtistChange = (event) => {
     this.setState({ artistInput: event.target.value });
@@ -36,9 +38,22 @@ export default class Songs extends Component {
 
   saveSong = () => {
     let songLyrics = [];
-    console.log(this.state.artistInput, this.state.songInput);
     this.state.lyrics.map((lyric) => songLyrics.push(lyric.props.children));
-    console.log(songLyrics);
+    fetch("http://localhost:3000/favorites", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        artist: this.state.artistInput,
+        title: this.state.songInput,
+        lyrics: `${songLyrics}`,
+      }),
+    }).then(this.setState({ saved: "Saved to Your Favorites!" }));
+  };
+
+  clearScreen = () => {
+    this.setState(initialState);
   };
 
   render() {
@@ -66,15 +81,21 @@ export default class Songs extends Component {
             <input type="submit" />
           </div>
         </form>
-        {this.state.lyrics !== "" ? (
+        {this.state.lyrics.length > 1 ? (
           <div className="results">
             <text className="lyrics">{this.state.lyrics}</text>
             <p></p>
             <button className="save-favorite-button" onClick={this.saveSong}>
               Save to My Favorites
             </button>
+            <button className="clear-button" onClick={this.clearScreen}>
+              Clear Screen
+            </button>
           </div>
-        ) : null}
+        ) : (
+          <h6 className="no-results">No Results</h6>
+        )}
+        <p className="saved">{this.state.saved}</p>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+const apiKey = "858828029fmsh37b23938027c823p15044ejsn9d489660ef51";
 const initialState = {
   isShowing: false,
   rhymesWith: "",
@@ -16,26 +17,17 @@ const initialState = {
   oftenProceeds: "",
   syllableCount: "",
   words: [],
-  wordData: "",
+  wordData: {
+    word: "",
+    definitions: [],
+    synonyms: "",
+    syllables: "",
+    derivation: "",
+    similarTo: "",
+    frequencyScore: "",
+  },
+  showWordData: false,
 };
-
-// let a;
-// const queryTerms = {
-//   rhymesWith: "rel_rhy",
-//   closeRhymes: "rel_nry",
-//   similarTo: "ml",
-//   triggeredBy: "rel_trg",
-//   startsWith: `sp=${a}*`,
-//   endsWith: `sp=*${a}`,
-//   soundsLike: "sl",
-//   speltLike: "sp",
-//   adjectives: "rel_jjb",
-//   nouns: "rel_jja",
-//   relationSort: "topic",
-//   oftenFollows: "lc",
-//   oftenProceeds: "rc",
-//   syllableCount: "mds",
-// };
 
 export default class MagicForm extends Component {
   state = initialState;
@@ -64,7 +56,7 @@ export default class MagicForm extends Component {
       syllableCount,
     } = this.state;
 
-    let queryString = ["http://api.datamuse.com/words?"];
+    let queryString = ["https://api.datamuse.com/words?"];
 
     if (rhymesWith.length > 0) {
       queryString.push(`rel_rhy=${rhymesWith}&`);
@@ -83,7 +75,7 @@ export default class MagicForm extends Component {
     }
 
     if (startsWith.length > 0) {
-      queryString.push(`sp=${startsWith}*`);
+      queryString.push(`sp=${startsWith}*&`);
     }
 
     if (endsWith.length > 0) {
@@ -122,9 +114,13 @@ export default class MagicForm extends Component {
       queryString.push(`mds=${syllableCount}&`);
     }
 
+    console.log(queryString.join(""));
     fetch(queryString.join(""))
       .then((response) => response.json())
-      .then((words) => this.setState({ words: words }));
+      .then((words) => this.setState({ words: words }))
+      .catch((error) => {
+        console.log("queryString error: ", error);
+      });
   };
 
   handleChange = (event) => {
@@ -142,7 +138,22 @@ export default class MagicForm extends Component {
       },
     })
       .then((response) => response.json())
-      .then((wordData) => console.log(wordData));
+      .then((wordData) => {
+        this.setState({
+          showWordData: true,
+          wordData: {
+            word: wordData.word,
+            definitions: wordData.results[0].definition,
+            synonyms: wordData.results[0].synonyms,
+            syllables: wordData.syllables.count,
+            frequencyScore: wordData.frequency,
+          },
+        });
+      });
+  };
+
+  clearWord = () => {
+    this.setState({ showWordData: false });
   };
 
   render() {
@@ -291,10 +302,25 @@ export default class MagicForm extends Component {
                   placeholder="Syllable count..."
                   onChange={this.handleChange}
                 />
-                <input className="input" type="submit" value="Search / Clear" />
+                <input className="input" type="submit" value="Search" />
               </div>
               <div></div>
             </form>
+            {this.state.showWordData === false ? null : (
+              <section onClick={this.clearWord} className="word-data">
+                <h3>{this.state.wordData.word}</h3>
+                <h5>definition: {this.state.wordData.definitions}</h5>
+                <section className="synonym-section">
+                  <h5>synonyms:</h5>
+                  {this.state.wordData.synonyms.map((synonym) => (
+                    <h5 className="synonym">{synonym}</h5>
+                  ))}
+                </section>
+                <h5>syllables: {this.state.wordData.syllables}</h5>
+                <h5>frequency score: {this.state.wordData.frequencyScore}</h5>
+              </section>
+            )}
+
             <section className="suggestions">
               {this.state.words.map((word) => {
                 return (

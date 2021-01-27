@@ -33,3 +33,12 @@
 .save-favorite-button {
   width: 200px;
 }
+
+.clear-button {
+  width: 200px;
+}
+
+.saved {
+  display: flex;
+  justify-content: flex-start;
+}

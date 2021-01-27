@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap");
+
+.title {
+  font-family: "Roboto Mono", monospace;
+}
+
+.favorites-section {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 20px;
+  width: 40vw;
+}
+
+.my-songs-section {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 20px;
+  width: 40vw;
+}
+
+.favorites-page {
+  display: flex;
+  justify-content: space-around;
+}
+
+.song-link:hover {
+  cursor: pointer;
+}
+
+.delete-button {
+  margin-left: 1rem;
+  height: 1.3rem;
+  width: 1.3rem;
+  border-radius: 3px;
+}
+
+.show-song > .lyric-row {
+  font-family: "Roboto Mono", monospace;
+  display: flex;
+  justify-content: center;
+}
+
+/* .lyric-row {
+  font-family: "Roboto Mono", monospace;
+  display: flex;
+  justify-content: center;
+} */

@@ -83,9 +83,17 @@ body {
 }
 
 .song-title-input {
-  width: 50vw;
+  width: 60vw;
   margin-bottom: 1rem;
   height: 2rem;
+  font-size: 200%;
+  text-align: center;
+}
+
+.artist-input {
+  width: 50vw;
+  margin-bottom: 1rem;
+  height: 1.7rem;
   font-size: 200%;
   text-align: center;
 }
@@ -132,4 +140,46 @@ body {
 
 .suggested {
   margin: 0.5rem;
+}
+
+.suggested:hover {
+  cursor: pointer;
+}
+
+.word-data {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 80%;
+  margin: auto;
+  box-shadow: 5px 5px 5px black;
+}
+
+.word-data:hover {
+  cursor: pointer;
+}
+
+.synonym-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.synonym {
+  margin: auto;
+}
+
+.save-button {
+  width: 120px;
+  font-family: "Roboto Mono", monospace;
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.save-button:hover {
+  cursor: pointer;
+}
+
+.lyric-top {
+  display: flex;
 }

@@ -13,7 +13,7 @@ export default function Header() {
             search songs
           </Link>
           <Link className="header-link" to="/lyrics">
-            my lyrics
+            my songs
           </Link>
           <Link className="header-link" to="/write">
             write

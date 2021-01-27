@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class SongForm extends Component {
   addLine = () => {
-    return <input type="text" />;
+    return <input type="text" name="" placeholder="new line" />;
   };
 
   render() {

@@ -10,14 +10,6 @@ export default class SongForm extends Component {
   render() {
     return (
       <div className="lyric-form">
-        <div className="lyric-top">
-          <div>
-            <h4 className="save-button">Save</h4>
-          </div>
-          <div></div>
-          <div></div>
-        </div>
-
         <input className="song-title-input" placeHolder="Song Title" />
         <input className="artist-input" placeHolder="Artist Name" />
         <div className="lyric-row">
@@ -54,6 +46,7 @@ export default class SongForm extends Component {
           <input className="lyric-row-input" />
           <button className="clear-line-button">x</button>
         </div>
+
         <div>
           <button className="add-row-button" onClick={this.addLine}>
             + line
@@ -61,6 +54,9 @@ export default class SongForm extends Component {
           <button className="add-row-button" onClick={this.addLine}>
             + break
           </button>
+        </div>
+        <div>
+          <h4 className="save-button">Save</h4>
         </div>
       </div>
     );

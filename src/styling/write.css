@@ -14,26 +14,35 @@ body {
 .form-card {
   margin: 30px;
   font-family: "Roboto Mono", monospace;
-  height: 500px;
-  width: 100%;
+  height: 300px;
+  width: 95vw;
   border: 2px solid rgb(255, 129, 129);
   border-radius: 20px;
 }
 
 .form-button {
+  width: 120px;
   font-family: "Roboto Mono", monospace;
   border: 1px solid black;
   padding: 2px;
   border-radius: 10px;
 }
 
+.form-button:hover {
+  cursor: pointer;
+}
+
 .hide-button {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   border: 1px solid black;
   padding: 2px;
-  width: 70px;
+  width: 40px;
   border-radius: 10px;
+}
+
+.hide-button:hover {
+  cursor: pointer;
 }
 .top-form {
   display: flex;
@@ -48,6 +57,22 @@ body {
   margin-top: -50px;
 }
 
-.helper:hover {
-  cursor: pointer;
+.input {
+  width: 200px;
+}
+.inputForm {
+  display: flex;
+  justify-content: center;
+}
+
+.inputs {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 500px;
+}
+
+.need-a-hand {
+  display: flex;
+  justify-content: flex-end;
 }

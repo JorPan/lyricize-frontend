@@ -6,6 +6,7 @@ export default class SongForm extends Component {
     titleInput: "",
     artistInput: "",
     lyrics: [],
+    saved: "",
   };
 
   addLine = (event) => {
@@ -76,23 +77,18 @@ export default class SongForm extends Component {
     let rowKeyArray = keyArray.filter((key) => key.includes("row"));
     let lyricArray = rowKeyArray.map((key) => this.state[key]);
     this.setState({ lyrics: lyricArray });
+    fetch("http://localhost:3000/songs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        artist: this.state.artistInput,
+        title: this.state.titleInput,
+        lyrics: `${lyricArray}`,
+      }),
+    }).then(this.setState({ saved: "Saved to Your Songs!" }));
   };
-
-  // saveSong = () => {
-  //   let songLyrics = [];
-  //   this.state.lyrics.map((lyric) => songLyrics.push(lyric.props.children));
-  //   fetch("http://localhost:3000/favorites", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       artist: this.state.artistInput,
-  //       title: this.state.songInput,
-  //       lyrics: `${songLyrics}`,
-  //     }),
-  //   }).then(this.setState({ saved: "Saved to Your Favorites!" }));
-  // };
 
   render() {
     return (
@@ -123,6 +119,7 @@ export default class SongForm extends Component {
             <input type="submit" className="save-button" value="Save" />
           </div>
         </form>
+        {this.state.saved === "" ? null : <p>{this.state.saved}</p>}
       </div>
     );
   }

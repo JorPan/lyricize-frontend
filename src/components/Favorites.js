@@ -70,11 +70,11 @@ export default class Favorites extends Component {
             <h2 className="title">My Favorited Songs</h2>
             {this.state.favorites.map((favorite) => {
               return (
-                <div>
+                <div key={favorite.id}>
                   <a
                     onClick={this.showSong}
                     className="song-link"
-                    key={favorite.id}
+                    key={`${favorite.id}+button`}
                     id={favorite.id}
                   >
                     {favorite.artist} - {favorite.title}
@@ -83,6 +83,7 @@ export default class Favorites extends Component {
                     onClick={this.removeSong}
                     className="delete-button"
                     id={favorite.id}
+                    key={`${favorite.id}-button`}
                   >
                     x
                   </button>
@@ -98,10 +99,18 @@ export default class Favorites extends Component {
           <h2 className="title">{this.state.song.artist}</h2>
           <h3 className="title">{this.state.song.title}</h3>
           {this.state.song.lyrics.map((row) => {
-            return <p className="lyric-row">{row}</p>;
+            return (
+              <p className="lyric-row" key={`lyric${row}`}>
+                {row}{" "}
+              </p>
+            );
           })}
           {this.state.song.lyrics.length > 0 ? (
-            <button onClick={this.clearSong} className="clear-button">
+            <button
+              onClick={this.clearSong}
+              className="clear-button"
+              key="button"
+            >
               Clear
             </button>
           ) : null}

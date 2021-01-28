@@ -19,6 +19,7 @@ function App() {
         <Route exact path="/lyrics" component={Lyrics} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
+        <Redirect to="/" />
       </Switch>
     </div>
   );

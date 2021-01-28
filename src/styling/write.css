@@ -163,26 +163,22 @@ body {
   cursor: pointer;
 }
 
-.synonym-section {
-  background-color: rgb(207, 186, 240);
-  display: flex;
-  justify-content: center;
-}
-
-.synonym-title {
-  margin-left: 5rem;
-}
-
 .word-section {
-  background-color: rgb(186, 240, 210);
+  background-color: rgb(207, 186, 240);
   display: flex;
   justify-content: space-around;
 }
 
 .definition-section {
-  background-color: rgb(240, 186, 186);
+  background-color: rgb(186, 218, 240);
   display: flex;
   justify-content: space-around;
+}
+
+.synonym-section {
+  background-color: rgb(186, 240, 210);
+  display: flex;
+  justify-content: center;
 }
 
 .syllables-section {

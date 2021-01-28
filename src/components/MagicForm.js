@@ -25,6 +25,37 @@ const initialState = {
     derivation: "",
     similarTo: "",
     frequencyScore: "",
+    pronunciation: "",
+  },
+  showWordData: false,
+};
+
+const clearState = {
+  isShowing: true,
+  rhymesWith: "",
+  closeRhymes: "",
+  similarTo: "",
+  triggeredBy: "",
+  startsWith: "",
+  endsWith: "",
+  soundsLike: "",
+  speltLike: "",
+  adjectives: "",
+  nouns: "",
+  relationSort: "",
+  oftenFollows: "",
+  oftenProceeds: "",
+  syllableCount: "",
+  words: [],
+  wordData: {
+    word: "",
+    definitions: [],
+    synonyms: "",
+    syllables: "",
+    derivation: "",
+    similarTo: "",
+    frequencyScore: "",
+    pronunciation: "",
   },
   showWordData: false,
 };
@@ -147,6 +178,7 @@ export default class MagicForm extends Component {
             synonyms: wordData.results[0].synonyms,
             syllables: wordData.syllables.count,
             frequencyScore: wordData.frequency,
+            pronunciation: wordData.pronunciation.all,
           },
         });
       });
@@ -154,6 +186,10 @@ export default class MagicForm extends Component {
 
   clearWord = () => {
     this.setState({ showWordData: false });
+  };
+
+  clearForm = () => {
+    this.setState(clearState);
   };
 
   render() {
@@ -303,21 +339,35 @@ export default class MagicForm extends Component {
                   onChange={this.handleChange}
                 />
                 <input className="input" type="submit" value="Search" />
+                <button onClick={this.clearForm}>Clear</button>
               </div>
               <div></div>
             </form>
             {this.state.showWordData === false ? null : (
               <section onClick={this.clearWord} className="word-data">
-                <h3>{this.state.wordData.word}</h3>
-                <h5>definition: {this.state.wordData.definitions}</h5>
+                <h3 className="word-section">{this.state.wordData.word}</h3>
+                <h5 className="definition-section">
+                  definition: {this.state.wordData.definitions}
+                </h5>
                 <section className="synonym-section">
-                  <h5>synonyms:</h5>
-                  {this.state.wordData.synonyms.map((synonym) => (
-                    <h5 className="synonym">{synonym}</h5>
-                  ))}
+                  <div>
+                    <h5 className="synonym-title">synonyms:</h5>
+                  </div>
+                  <div className="synonyms">
+                    {this.state.wordData.synonyms.map((synonym) => (
+                      <h5 className="synonym">{synonym}</h5>
+                    ))}
+                  </div>
                 </section>
-                <h5>syllables: {this.state.wordData.syllables}</h5>
-                <h5>frequency score: {this.state.wordData.frequencyScore}</h5>
+                <h5 className="syllables-section">
+                  syllables: {this.state.wordData.syllables}
+                </h5>
+                <h5 className="frequency-section">
+                  frequency score: {this.state.wordData.frequencyScore}
+                </h5>
+                <h5 className="pronunciation-section">
+                  pronunciation: {this.state.wordData.pronunciation}
+                </h5>
               </section>
             )}
 

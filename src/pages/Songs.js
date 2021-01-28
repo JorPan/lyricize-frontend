@@ -10,12 +10,10 @@ const initialState = {
 export default class Songs extends Component {
   state = initialState;
 
-  handleArtistChange = (event) => {
-    this.setState({ artistInput: event.target.value });
-  };
-
-  handleSongChange = (event) => {
-    this.setState({ songInput: event.target.value });
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   };
 
   handleSubmit = (event) => {
@@ -65,16 +63,16 @@ export default class Songs extends Component {
           </div>
           <div>
             <input
-              onChange={this.handleArtistChange}
+              onChange={this.handleChange}
               type="text"
-              name="artist"
+              name="artistInput"
               placeholder="artist"
               value={this.state.artistInput}
             />
             <input
-              onChange={this.handleSongChange}
+              onChange={this.handleChange}
               type="text"
-              name="song"
+              name="songInput"
               placeholder="song"
               value={this.state.songInput}
             />

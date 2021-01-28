@@ -307,14 +307,6 @@ export default class MagicForm extends Component {
                   onChange={this.handleChange}
                 />
                 <input
-                  name="relationSort"
-                  value={relationSort}
-                  className="input"
-                  type="text"
-                  placeholder="Sort by relation to..."
-                  onChange={this.handleChange}
-                />
-                <input
                   name="oftenFollows"
                   value={oftenFollows}
                   className="input"
@@ -328,6 +320,14 @@ export default class MagicForm extends Component {
                   className="input"
                   type="text"
                   placeholder="Often preceeds..."
+                  onChange={this.handleChange}
+                />
+                <input
+                  name="relationSort"
+                  value={relationSort}
+                  className="input"
+                  type="text"
+                  placeholder="Sort by relation to..."
                   onChange={this.handleChange}
                 />
                 <input

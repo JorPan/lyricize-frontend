@@ -5,6 +5,8 @@ import About from "./pages/About";
 import Write from "./pages/Write";
 import Songs from "./pages/Songs";
 import Lyrics from "./pages/Lyrics";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route exact path="/write" component={Write} />
         <Route exact path="/songs" component={Songs} />
         <Route exact path="/lyrics" component={Lyrics} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
       </Switch>
     </div>
   );

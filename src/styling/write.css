@@ -14,7 +14,6 @@ body {
 .form-card {
   margin: 30px;
   font-family: "Roboto Mono", monospace;
-  width: 70vw;
   border: 2px solid rgb(255, 129, 129);
   border-radius: 20px;
 }

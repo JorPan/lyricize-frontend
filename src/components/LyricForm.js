@@ -26,12 +26,18 @@ export default class SongForm extends Component {
   };
 
   clearRow = (event) => {
-    console.log(event.target.name);
-    this.setState({ [event.target.name]: "" });
+    event.preventDefault();
+    let stateName = event.target.name;
+    this.setState({
+      [`${stateName}fallback`]: this.state[`${stateName}`],
+      [stateName]: "",
+    });
   };
 
-  undoChange = (event, prevState) => {
-    console.log(prevState);
+  undoChange = (event) => {
+    event.preventDefault();
+    let stateName = event.target.name;
+    this.setState({ [stateName]: this.state[`${stateName}fallback`] });
   };
 
   showLines = () => {
@@ -51,16 +57,14 @@ export default class SongForm extends Component {
             key={`clear${i}`}
             onClick={this.clearRow}
             name={`row${i}`}
-            type="submit"
             className="clear-line-button"
           >
             x
           </button>
           <button
             key={`refresh${i}`}
-            onClick={(prevState) => this.undoChange}
+            onClick={this.undoChange}
             name={`row${i}`}
-            type="submit"
             className="clear-line-button"
           >
             ↺

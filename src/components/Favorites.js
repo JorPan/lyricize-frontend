@@ -99,7 +99,7 @@ export default class Favorites extends Component {
           })}
           {this.state.song.lyrics.length > 0 ? (
             <button onClick={this.clearSong} className="clear-button">
-              Clear
+              Hide
             </button>
           ) : null}
         </div>

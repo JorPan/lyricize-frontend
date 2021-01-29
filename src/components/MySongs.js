@@ -70,6 +70,7 @@ export default class MySongs extends Component {
             title: song.title,
             lyrics: song.lyrics,
           },
+          songId: event.target.id,
         });
       });
   };
@@ -81,11 +82,21 @@ export default class MySongs extends Component {
         title: "",
         lyrics: [],
       },
+      show: false,
+      songId: 0,
     });
   };
 
   editSong = () => {
-    this.setState({ edit: true, show: false });
+    this.setState({ edit: !this.state.edit, show: false });
+  };
+
+  hideEditForm = () => {
+    this.setState({ edit: !this.state.edit, show: false });
+  };
+
+  saveEdits = () => {
+    this.setState({ edit: false });
   };
 
   render() {
@@ -119,14 +130,18 @@ export default class MySongs extends Component {
                 Edit
               </button>
               <button onClick={this.clearSong} className="clear-button">
-                Clear
+                Hide
               </button>
             </div>
           ) : null}
         </div>
         {this.state.edit === false ? null : (
           <div className="edit-form">
-            <EditForm passedState={this.state} />
+            <EditForm
+              hideEditForm={this.hideEditForm}
+              passedState={this.state}
+              saveEdits={this.saveEdits}
+            />
           </div>
         )}
       </div>

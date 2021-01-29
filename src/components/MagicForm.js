@@ -145,7 +145,6 @@ export default class MagicForm extends Component {
       queryString.push(`mds=${syllableCount}&`);
     }
 
-    console.log(queryString.join(""));
     fetch(queryString.join(""))
       .then((response) => response.json())
       .then((words) => this.setState({ words: words }))
@@ -164,12 +163,13 @@ export default class MagicForm extends Component {
     fetch(`https://wordsapiv1.p.rapidapi.com/words/${wordToSearch}`, {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "858828029fmsh37b23938027c823p15044ejsn9d489660ef51",
+        "x-rapidapi-key": apiKey,
         "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
       },
     })
       .then((response) => response.json())
       .then((wordData) => {
+        // console.log(wordData.synonyms);
         this.setState({
           showWordData: true,
           wordData: {
@@ -210,7 +210,7 @@ export default class MagicForm extends Component {
       syllableCount,
     } = this.state;
     return (
-      <div>
+      <div className="form-card-container">
         {this.state.isShowing === false ? (
           <div className="need-a-hand">
             <h4 className="form-button" onClick={this.showForm}>
@@ -354,9 +354,11 @@ export default class MagicForm extends Component {
                     <h5 className="synonym-title">synonyms:</h5>
                   </div>
                   <div className="synonyms">
-                    {this.state.wordData.synonyms.map((synonym) => (
-                      <h5 className="synonym">{synonym}</h5>
-                    ))}
+                    {this.state.wordData.synonyms
+                      ? this.state.wordData.synonyms.map((synonym) => (
+                          <h5 className="synonym">{synonym}</h5>
+                        ))
+                      : null}
                   </div>
                 </section>
                 <h5 className="syllables-section">

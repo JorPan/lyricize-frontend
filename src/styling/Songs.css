@@ -42,3 +42,11 @@
   display: flex;
   justify-content: center;
 }
+
+.definition:hover {
+  cursor: pointer;
+}
+
+.definition {
+  width: 350px;
+}

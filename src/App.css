@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap");
+
 .App {
   text-align: center;
 }
@@ -96,4 +97,38 @@
 .editsection {
   display: flex;
   justify-content: space-around;
+}
+
+.about-items-section {
+  flex: row;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.about-description {
+  font-family: "Roboto Mono", monospace;
+}
+
+.about-item {
+  font-family: "Roboto Mono", monospace;
+}
+
+.genre {
+  font-family: "Roboto Mono", monospace;
+}
+
+.genre:hover {
+  cursor: pointer;
+}
+
+.randoms {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+input {
+  font-family: "Roboto Mono", monospace;
+  color: black;
+  padding: 0.3rem;
 }

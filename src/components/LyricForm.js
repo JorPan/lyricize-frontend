@@ -120,10 +120,10 @@ export default class SongForm extends Component {
             </button>
           </div>
           <div>
+            {this.state.saved === "" ? null : <p>{this.state.saved}</p>}
             <input type="submit" className="save-button" value="Save" />
           </div>
         </form>
-        {this.state.saved === "" ? null : <p>{this.state.saved}</p>}
       </div>
     );
   }

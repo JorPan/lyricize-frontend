@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import BinaryJazz from "./BinaryJazz";
+import RandomWord from "./RandomWord";
+import DefineWord from "./DefineWord";
+
 const apiKey = "858828029fmsh37b23938027c823p15044ejsn9d489660ef51";
 const initialState = {
   isShowing: false,
@@ -130,7 +134,7 @@ export default class MagicForm extends Component {
     }
 
     if (relationSort.length > 0) {
-      queryString.push(`topic=${relationSort}&`);
+      queryString.push(`topics=${relationSort}&`);
     }
 
     if (oftenFollows.length > 0) {
@@ -144,7 +148,7 @@ export default class MagicForm extends Component {
     if (syllableCount > 0) {
       queryString.push(`mds=${syllableCount}&`);
     }
-
+    console.log(queryString.join(""));
     fetch(queryString.join(""))
       .then((response) => response.json())
       .then((words) => this.setState({ words: words }))
@@ -169,16 +173,15 @@ export default class MagicForm extends Component {
     })
       .then((response) => response.json())
       .then((wordData) => {
-        // console.log(wordData.synonyms);
         this.setState({
           showWordData: true,
           wordData: {
             word: wordData.word,
-            definitions: wordData.results[0].definition,
-            synonyms: wordData.results[0].synonyms,
-            syllables: wordData.syllables.count,
-            frequencyScore: wordData.frequency,
-            pronunciation: wordData.pronunciation.all,
+            definitions: wordData.results ? wordData.results[0].definition : "",
+            synonyms: wordData.results ? wordData.results[0].synonyms : "",
+            syllables: wordData.results ? wordData.syllables.count : "",
+            frequencyScore: wordData.results ? wordData.frequency : "",
+            pronunciation: wordData.results ? wordData.pronunciation.all : "",
           },
         });
       });
@@ -219,6 +222,12 @@ export default class MagicForm extends Component {
           </div>
         ) : (
           <div className="form-card">
+            <div className="randoms">
+              <RandomWord />
+              <BinaryJazz />
+              <DefineWord />
+            </div>
+
             <div className="top-form">
               <h4 className="hide-button" onClick={this.showForm}>
                 hide

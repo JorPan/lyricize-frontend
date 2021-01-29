@@ -3,7 +3,7 @@
 .results {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   border: 1px solid rgb(255, 249, 249);
   border-radius: 10px;
   width: 50vw;
@@ -40,5 +40,5 @@
 
 .saved {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }

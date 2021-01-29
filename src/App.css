@@ -83,3 +83,17 @@
 .about-title {
   font-family: "Roboto Mono", monospace;
 }
+
+.my-song-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.songsection {
+  display: flex;
+  justify-content: space-around;
+}
+.editsection {
+  display: flex;
+  justify-content: space-around;
+}

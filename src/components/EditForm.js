@@ -1,13 +1,24 @@
 import React, { Component } from "react";
+import "../styling/Edit.css";
 
 export default class SongForm extends Component {
   state = {
+    songId: 0,
     numLines: 4,
     titleInput: "",
     artistInput: "",
     lyrics: [],
     saved: "",
   };
+
+  componentDidMount() {
+    this.setState({
+      numLines: this.props.passedState.song.lyrics.length,
+      titleInput: this.props.passedState.song.title,
+      artistInput: this.props.passedState.song.artist,
+      lyrics: this.props.passedState.song.lyrics,
+    });
+  }
 
   addLine = (event) => {
     event.preventDefault();
@@ -36,13 +47,13 @@ export default class SongForm extends Component {
 
   showLines = () => {
     let lines = [];
-    for (let i = 1; i <= this.state.numLines; i++) {
+    for (let i = 0; i < this.props.passedState.song.lyrics.length; i++) {
       lines.push(
         <div className="lyric-row">
-          <p className="row-number">{i}</p>
+          <p className="row-number">{i + 1}</p>
           <input
             key={`input${i}`}
-            value={this.state[`row${i}`]}
+            value={this.props.passedState.song.lyrics[i]}
             onChange={this.handleChange}
             name={`row${i}`}
             className="lyric-row-input"
@@ -73,21 +84,22 @@ export default class SongForm extends Component {
 
   saveLyrics = (event) => {
     event.preventDefault();
-    let keyArray = Object.keys(this.state);
-    let rowKeyArray = keyArray.filter((key) => key.includes("row"));
-    let lyricArray = rowKeyArray.map((key) => this.state[key]);
-    this.setState({ lyrics: lyricArray });
-    fetch("http://localhost:3000/songs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        artist: this.state.artistInput,
-        title: this.state.titleInput,
-        lyrics: lyricArray,
-      }),
-    }).then(this.setState({ saved: "Saved to Your Songs!" }));
+    console.log(event);
+    // let keyArray = Object.keys(this.state);
+    // let rowKeyArray = keyArray.filter((key) => key.includes("row"));
+    // let lyricArray = rowKeyArray.map((key) => this.state[key]);
+    // this.setState({ lyrics: lyricArray });
+    // fetch("http://localhost:3000/songs", {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     artist: this.state.artistInput,
+    //     title: this.state.titleInput,
+    //     lyrics: lyricArray,
+    //   }),
+    // }).then(this.setState({ saved: "Saved to Your Songs!" }));
   };
 
   render() {
@@ -98,15 +110,15 @@ export default class SongForm extends Component {
             onChange={this.handleChange}
             name="titleInput"
             className="song-title-input"
-            placeholder="Song Title"
+            value={this.state.titleInput}
           />
           <input
             onChange={this.handleChange}
             name="artistInput"
             className="artist-input"
-            placeholder="Artist Name"
+            value={this.state.artistInput}
           />
-          {this.showLines()}
+          {this.props.passedState.edit === true ? this.showLines() : null}
           <div>
             <button className="add-row-button" onClick={this.addLine}>
               + line

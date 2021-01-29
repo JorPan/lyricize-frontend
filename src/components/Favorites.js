@@ -55,11 +55,6 @@ export default class Favorites extends Component {
         this.setState({ favorites: filteredFavorites });
       })
       .then(window.location.reload());
-    //   .then(
-    //     fetch("http://localhost:3000/favorites")
-    //       .then((response) => response.json())
-    //       .then((favorites) => this.setState({ favorites: favorites }))
-    //   );
   };
 
   render() {
@@ -91,26 +86,19 @@ export default class Favorites extends Component {
               );
             })}
           </div>
-          <div className="my-songs-section">
-            <h2 className="title">My Written Songs</h2>
-          </div>
         </div>
         <div className="show-song">
           <h2 className="title">{this.state.song.artist}</h2>
           <h3 className="title">{this.state.song.title}</h3>
-          {this.state.song.lyrics.map((row) => {
+          {this.state.song.lyrics.map((row, i) => {
             return (
-              <p className="lyric-row" key={`lyric${row}`}>
+              <p className="lyric-row" key={i} id={`lyric${row}`}>
                 {row}{" "}
               </p>
             );
           })}
           {this.state.song.lyrics.length > 0 ? (
-            <button
-              onClick={this.clearSong}
-              className="clear-button"
-              key="button"
-            >
+            <button onClick={this.clearSong} className="clear-button">
               Clear
             </button>
           ) : null}

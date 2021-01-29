@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../styling/Songs.css";
+
 const initialState = {
   artistInput: "",
   songInput: "",
@@ -35,17 +36,18 @@ export default class Songs extends Component {
   };
 
   saveSong = () => {
-    let songLyrics = [];
-    this.state.lyrics.map((lyric) => songLyrics.push(lyric.props.children));
+    let songLyrics = this.state.lyrics.map((lyric) => lyric.props.children);
     fetch("http://localhost:3000/favorites", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        artist: this.state.artistInput,
-        title: this.state.songInput,
-        lyrics: `${songLyrics}`,
+        favorite: {
+          artist: this.state.artistInput,
+          title: this.state.songInput,
+          lyrics: songLyrics,
+        },
       }),
     }).then(this.setState({ saved: "Saved to Your Favorites!" }));
   };
@@ -82,7 +84,6 @@ export default class Songs extends Component {
         {this.state.lyrics.length > 1 ? (
           <div className="results">
             <text className="lyrics">{this.state.lyrics}</text>
-            <p></p>
             <button className="save-favorite-button" onClick={this.saveSong}>
               Save to My Favorites
             </button>

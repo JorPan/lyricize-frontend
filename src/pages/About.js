@@ -8,7 +8,7 @@ export default function About() {
         Lyricize is a platform to help songwriters write <u>better</u> lyrics.
       </h3>
       <h4 className="about-description">
-        The key feature is the lyric-writing helper,
+        The key feature is the magic lyric form
       </h4>
       <h4 className="about-description">That benefits users by offering</h4>
       <div className="about-items-section">
@@ -21,7 +21,7 @@ export default function About() {
         </p>
       </div>
       <h4 className="about-description">
-        And other helpful insights as they write.
+        ..and other helpful insights <u>as they write</u>.
       </h4>
     </div>
   );

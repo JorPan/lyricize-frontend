@@ -97,6 +97,7 @@ export default class MySongs extends Component {
 
   saveEdits = () => {
     this.setState({ edit: false });
+    window.location.replace("/lyrics");
   };
 
   render() {

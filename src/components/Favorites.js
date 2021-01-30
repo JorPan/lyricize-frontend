@@ -44,7 +44,6 @@ export default class Favorites extends Component {
   };
 
   removeSong = (event) => {
-    console.log("clicked delete");
     fetch(`http://localhost:3000/favorites/${event.target.id}`, {
       method: "DELETE",
     })

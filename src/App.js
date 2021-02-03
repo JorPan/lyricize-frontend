@@ -14,11 +14,11 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={About} />
-        <Route exact path="/write" component={Write} />
-        <Route exact path="/songs" component={Songs} />
-        <Route exact path="/lyrics" component={Lyrics} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
+        <Route path="/write" component={Write} />
+        <Route path="/songs" component={Songs} />
+        <Route path="/lyrics" component={Lyrics} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
         <Redirect to="/" />
       </Switch>
     </div>

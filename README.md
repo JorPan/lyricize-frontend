@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Lyricize Backend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Get the backend end here: https://github.com/JorPan/lyricize-backend
 
-## Available Scripts
+Lyricize is a web app designed for song writers to write better lyrics. 
 
-In the project directory, you can run:
+The main feature is a helper tool that can generate random words or genres for inspiration, and has 14 stackable inputs to find rhymes, alliterations, similies, etc. 
 
-### `npm start`
+## Inspiration
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Writing lyrics has always been really difficult, so I wanted to make a tool that could help people write better lyrics. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies
 
-### `npm test`
+💻React.js / XML <br />
+💻JavaScript / HTML / CSS <br />
+💻Ruby <br />
+💻Rails <br />
+💻PostgreSQL <br />
+💻Active Record <br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Demo Video
+[Lyricize Demo Video](https://www.youtube.com/watch?v=xNXhS0R3J9k&feature=youtu.be)
 
-### `npm run build`
+## Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Backend
+- To access this app currently, users must clone this Github repository and open it in their code editor.
+- Install the Ruby gems by running "bundle install".
+- Create your local database by running "rails db:create && rails db:migrate".
+- Seed the database by running "rails db:seed".
+- After doing all of that, start up the back-end by running "rails s". 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Frontend (https://github.com/JorPan/lyricize-frontend)
+- Clone the front end repo off git hub at the link provided above.
+- Run npm install to get all dependencies.
+- Run npm start to start the server, and press 'y' when prompted to use a different port. 
+- This will automatically open the app in your browser. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Instructions
 
-### `npm run eject`
+Once logged in, users can search for song lyrics and save them to their favorites. Users can also write, view, edit, and delete their own written songs, and utilize a helper tool to find rhymes, similies, words that start or end with certain letters, etc. The inputs are stackable so users can narrow down their results as needed, and can click on any suggested word to see it's definition, synonyms, syllables, pronunciation, and more. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Helper Form / Suggested Word Card](https://imgur.com/fyJFre9)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Status
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This app is still under construction. 
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Linkedin](https://www.linkedin.com/in/jordan-panasewicz-77a93158/) Jordan Panasewicz

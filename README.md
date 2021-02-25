@@ -26,7 +26,7 @@ Writing lyrics has always been really difficult, so I wanted to make a tool that
 
 ## Setup
 
-Backend
+Backend (https://github.com/JorPan/lyricize-backend)
 - To access this app currently, users must clone this Github repository and open it in their code editor.
 - Install the Ruby gems by running "bundle install".
 - Create your local database by running "rails db:create && rails db:migrate".

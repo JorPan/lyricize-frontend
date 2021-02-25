@@ -43,7 +43,7 @@ Frontend (https://github.com/JorPan/lyricize-frontend)
 
 Once logged in, users can search for song lyrics and save them to their favorites. Users can also write, view, edit, and delete their own written songs, and utilize a helper tool to find rhymes, similies, words that start or end with certain letters, etc. The inputs are stackable so users can narrow down their results as needed, and can click on any suggested word to see it's definition, synonyms, syllables, pronunciation, and more. 
 
-![Helper Form / Suggested Word Card](https://imgur.com/fyJFre9)
+![Helper Form / Suggested Word Card](https://i.imgur.com/OoMDKHZ.png)
 
 
 ## Status

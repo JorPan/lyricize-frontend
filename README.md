@@ -1,4 +1,4 @@
-# Lyricize Backend
+# Lyricize Frontend
 
 - Get the backend end here: https://github.com/JorPan/lyricize-backend
 

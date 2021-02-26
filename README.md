@@ -48,7 +48,7 @@ Once logged in, users can search for song lyrics and save them to their favorite
 
 ## Status
 
-This app is still under construction. 
+This app is still under construction to be a part of the music.ly suite.
 
 
 ## Contact

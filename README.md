@@ -1,6 +1,6 @@
-# Lyricize Frontend
+# Lyricize Front-end
 
-- Get the backend end here: https://github.com/JorPan/lyricize-backend
+- Get the back-end end here: https://github.com/JorPan/lyricize-backend
 
 Lyricize is a web app designed for song writers to write better lyrics. 
 

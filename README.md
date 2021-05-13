@@ -26,14 +26,14 @@ Writing lyrics has always been really difficult, so I wanted to make a tool that
 
 ## Setup
 
-Backend (https://github.com/JorPan/lyricize-backend)
-- To access this app currently, users must clone the back end Github repository (https://github.com/JorPan/lyricize-backend) and open it in their code editor.
+Back-end (https://github.com/JorPan/lyricize-backend)
+- To access this app currently, users must clone the [back-end Github repository](https://github.com/JorPan/lyricize-backend) and open it in their code editor.
 - Install the Ruby gems by running "bundle install".
 - Create your local database by running "rails db:create && rails db:migrate".
 - Seed the database by running "rails db:seed".
 - After doing all of that, start up the back-end by running "rails s" to start the server on port 3000. 
 
-Frontend (https://github.com/JorPan/lyricize-frontend)
+Front-end (https://github.com/JorPan/lyricize-frontend)
 - Clone the this repo.
 - Run npm install to install all required dependencies.
 - Run npm start to start the server, and press 'y' when prompted to use a different port. 

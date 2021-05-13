@@ -24,14 +24,13 @@ export default class MySongs extends Component {
     console.log("clicked delete");
     fetch(`http://localhost:3000/songs/${event.target.id}`, {
       method: "DELETE",
-    })
-      .then(() => {
-        let filteredSongs = this.state.songs.filter(
-          (song) => song.id !== event.target.id
-        );
-        this.setState({ songs: filteredSongs });
-      })
-      .then(window.location.reload());
+    }).then(() => {
+      let filteredSongs = this.state.songs.filter(
+        (song) => song.id !== event.target.id
+      );
+      this.setState({ songs: filteredSongs });
+    });
+    // .then(window.location.reload());
   };
 
   renderSongs = () => {

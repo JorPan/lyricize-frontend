@@ -34,36 +34,6 @@ const initialState = {
   showWordData: false,
 };
 
-const clearState = {
-  isShowing: true,
-  rhymesWith: "",
-  closeRhymes: "",
-  similarTo: "",
-  triggeredBy: "",
-  startsWith: "",
-  endsWith: "",
-  soundsLike: "",
-  speltLike: "",
-  adjectives: "",
-  nouns: "",
-  relationSort: "",
-  oftenFollows: "",
-  oftenProceeds: "",
-  syllableCount: "",
-  words: [],
-  wordData: {
-    word: "",
-    definitions: [],
-    synonyms: "",
-    syllables: "",
-    derivation: "",
-    similarTo: "",
-    frequencyScore: "",
-    pronunciation: "",
-  },
-  showWordData: false,
-};
-
 export default class MagicForm extends Component {
   state = initialState;
 
@@ -192,7 +162,8 @@ export default class MagicForm extends Component {
   };
 
   clearForm = () => {
-    this.setState(clearState);
+    this.setState(initialState);
+    this.setState({ isShowing: true });
   };
 
   render() {

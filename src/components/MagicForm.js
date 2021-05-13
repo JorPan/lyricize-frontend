@@ -4,6 +4,7 @@ import RandomWord from "./RandomWord";
 import DefineWord from "./DefineWord";
 
 const apiKey = "858828029fmsh37b23938027c823p15044ejsn9d489660ef51";
+
 const initialState = {
   isShowing: false,
   rhymesWith: "",

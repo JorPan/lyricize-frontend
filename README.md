@@ -27,21 +27,21 @@ Writing lyrics has always been really difficult, so I wanted to make a tool that
 ## Setup
 
 Backend (https://github.com/JorPan/lyricize-backend)
-- To access this app currently, users must clone this Github repository and open it in their code editor.
+- To access this app currently, users must clone the back end Github repository (https://github.com/JorPan/lyricize-backend) and open it in their code editor.
 - Install the Ruby gems by running "bundle install".
 - Create your local database by running "rails db:create && rails db:migrate".
 - Seed the database by running "rails db:seed".
-- After doing all of that, start up the back-end by running "rails s". 
+- After doing all of that, start up the back-end by running "rails s" to start the server on port 3000. 
 
 Frontend (https://github.com/JorPan/lyricize-frontend)
-- Clone the front end repo off git hub at the link provided above.
-- Run npm install to get all dependencies.
+- Clone the this repo.
+- Run npm install to install all required dependencies.
 - Run npm start to start the server, and press 'y' when prompted to use a different port. 
-- This will automatically open the app in your browser. 
+- This should automatically open the app in your browser on port 3001. 
 
 ## Instructions
 
-Once logged in, users can search for song lyrics and save them to their favorites. Users can also write, view, edit, and delete their own written songs, and utilize a helper tool to find rhymes, similies, words that start or end with certain letters, etc. The inputs are stackable so users can narrow down their results as needed, and can click on any suggested word to see it's definition, synonyms, syllables, pronunciation, and more. 
+Users can search for song lyrics and save them to their favorites. Users can also write, view, edit, and delete their own written songs, and utilize a helper tool to find rhymes, similies, words that start or end with certain letters, etc. The inputs are stackable so users can narrow down their results as needed, and can click on any suggested word to see it's definition, synonyms, syllables, pronunciation, and more. 
 
 ![Helper Form / Suggested Word Card](https://i.imgur.com/OoMDKHZ.png)
 

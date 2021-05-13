@@ -31,7 +31,6 @@ export default class MySongs extends Component {
       );
       this.setState({ songs: filteredSongs });
     });
-    // .then(window.location.reload());
   };
 
   renderSongs = () => {

@@ -6,7 +6,6 @@ const songsURL = "http://localhost:3000/songs";
 
 export default function MySongs() {
   const [songs, setSongs] = useState([]);
-  // const [favorites, setFavorites] = useState([]);
   const [songArtist, setSongArtist] = useState("");
   const [songTitle, setSongTitle] = useState("");
   const [songLyrics, setSongLyrics] = useState([]);
@@ -132,11 +131,10 @@ export default function MySongs() {
         <div className="edit-form">
           <EditForm
             hideEditForm={hideEditForm}
-            songs={songs}
             songId={songId}
-            songArtist={songArtist}
-            songTitle={songTitle}
-            songLyrics={songLyrics}
+            artistInput={songArtist}
+            titleInput={songTitle}
+            lyrics={songLyrics}
             saveEdits={saveEdits}
           />
         </div>

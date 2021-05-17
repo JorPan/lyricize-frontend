@@ -15,14 +15,14 @@ export default class SongForm extends Component {
 
   componentDidMount() {
     this.setState({
-      numLines: this.props.passedState.song.lyrics.length,
-      titleInput: this.props.passedState.song.title,
-      artistInput: this.props.passedState.song.artist,
-      lyrics: this.props.passedState.song.lyrics,
-      songId: this.props.passedState.songId,
+      numLines: this.props.lyrics.length,
+      titleInput: this.props.titleInput,
+      artistInput: this.props.artistInput,
+      lyrics: this.props.lyrics,
+      songId: this.props.songId,
       edit: true,
     });
-    this.props.passedState.song.lyrics.map((lyric, i) => {
+    this.state.lyrics.map((lyric, i) => {
       this.setState({ [`row${i + 1}`]: lyric });
     });
   }
@@ -60,7 +60,7 @@ export default class SongForm extends Component {
           <p className="row-number">{i + 1}</p>
           <input
             key={`input${i}`}
-            defaultValue={this.props.passedState.song.lyrics[i]}
+            defaultValue={this.state.lyrics[i]}
             onChange={this.handleChange}
             name={[`row${i + 1}`]}
             className="lyric-row-input"

@@ -1,36 +1,32 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-export default class BinaryJazz extends Component {
-  state = {
-    showGenre: true,
-    genre: "",
-  };
+const genreURL = "https://binaryjazz.us/wp-json/genrenator/v1/genre/";
 
-  componentDidMount() {}
+export default function BinaryJazz() {
+  const [genre, setGenre] = useState("");
+  const [showGenre, setShowGenre] = useState(true);
 
-  showGenre = () => {
-    this.setState({ showGenre: true });
-    fetch("https://binaryjazz.us/wp-json/genrenator/v1/genre/")
+  const showThatGenre = () => {
+    setShowGenre(true);
+    fetch(genreURL)
       .then((response) => response.json())
-      .then((genre) => this.setState({ genre: genre }));
+      .then((genre) => setGenre(genre));
   };
 
-  hideGenre = () => {
-    this.setState({ showGenre: false });
+  const hideGenre = () => {
+    setShowGenre(false);
   };
 
-  render() {
-    return (
-      <div>
-        <button className="title" onClick={this.showGenre}>
-          Random Genre
-        </button>
-        {this.state.showGenre === false ? null : (
-          <p onClick={this.hideGenre} className="genre">
-            {this.state.genre}
-          </p>
-        )}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <button className="title" onClick={showThatGenre}>
+        Random Genre
+      </button>
+      {showGenre === false ? null : (
+        <p onClick={hideGenre} className="genre">
+          {genre}
+        </p>
+      )}
+    </div>
+  );
 }

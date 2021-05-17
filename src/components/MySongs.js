@@ -49,7 +49,7 @@ export default function MySongs() {
     setShow(false);
     setSongArtist("");
     setSongTitle("");
-    setSongLyrics("");
+    setSongLyrics([]);
   };
 
   const editSong = () => {
@@ -155,11 +155,11 @@ export default function MySongs() {
 //     show: false,
 //   };
 
-//   componentDidMount() {
-//     fetch("http://localhost:3000/songs")
-//       .then((response) => response.json())
-//       .then((songs) => this.setState({ songs: songs }));
-//   }
+// componentDidMount() {
+//   fetch("http://localhost:3000/songs")
+//     .then((response) => response.json())
+//     .then((songs) => this.setState({ songs: songs }));
+// }
 
 //   removeSong = (event) => {
 //     console.log("clicked delete");

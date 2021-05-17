@@ -22,7 +22,7 @@ export default class SongForm extends Component {
       songId: this.props.songId,
       edit: true,
     });
-    this.state.lyrics.map((lyric, i) => {
+    this.state.lyrics.forEach((lyric, i) => {
       this.setState({ [`row${i + 1}`]: lyric });
     });
   }

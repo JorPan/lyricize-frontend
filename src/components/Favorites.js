@@ -1,108 +1,91 @@
-import React, { Component } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "../styling/Favorites.css";
 
-const initialState = {
-  favorites: [],
-  song: {
-    artist: "",
-    title: "",
-    lyrics: [],
-  },
-};
+export default function Favorites() {
+  const [favorites, setFavorites] = useState([]);
+  const [songArtist, setSongArtist] = useState("");
+  const [songTitle, setSongTitle] = useState("");
+  const [songLyrics, setSongLyrics] = useState([]);
 
-export default class Favorites extends Component {
-  state = initialState;
-
-  componentDidMount() {
+  const fetchFavorites = useCallback(() => {
     fetch("http://localhost:3000/favorites")
       .then((response) => response.json())
-      .then((favorites) => this.setState({ favorites: favorites }));
-  }
+      .then((favorites) => setFavorites(favorites));
+  });
 
-  showSong = (event) => {
-    fetch(`http://localhost:3000/favorites/${event.target.id}`)
-      .then((response) => response.json())
-      .then((song) => {
-        this.setState({
-          song: {
-            artist: song.artist,
-            title: song.title,
-            lyrics: song.lyrics,
-          },
-        });
-      });
-  };
+  useEffect(() => {
+    fetchFavorites();
+  }, [fetchFavorites]);
 
-  clearSong = () => {
-    this.setState({
-      song: {
-        artist: "",
-        title: "",
-        lyrics: [],
-      },
+  const removeSong = (event) => {
+    fetch(`http://localhost:3000/favorites/${event.target.id}`, {
+      method: "DELETE",
+    }).then(() => {
+      fetchFavorites();
     });
   };
 
-  removeSong = (event) => {
-    fetch(`http://localhost:3000/favorites/${event.target.id}`, {
-      method: "DELETE",
-    })
-      .then(() => {
-        let filteredFavorites = this.state.favorites.filter(
-          (favorite) => favorite.id !== event.target.id
-        );
-        this.setState({ favorites: filteredFavorites });
-      })
-      .then(window.location.reload());
+  const showSong = (event) => {
+    fetch(`http://localhost:3000/favorites/${event.target.id}`)
+      .then((response) => response.json())
+      .then((song) => {
+        setSongArtist(song.artist);
+        setSongTitle(song.title);
+        setSongLyrics(song.lyrics);
+      });
   };
 
-  render() {
-    return (
-      <div>
-        <div className="favorites-page">
-          <div className="favorites-section">
-            <h2 className="title">My Favorited Songs</h2>
-            {this.state.favorites.map((favorite) => {
-              return (
-                <div key={favorite.id}>
-                  <a
-                    onClick={this.showSong}
-                    className="song-link"
-                    key={`${favorite.id}+button`}
-                    id={favorite.id}
-                  >
-                    {favorite.artist} - {favorite.title}
-                  </a>
-                  <button
-                    onClick={this.removeSong}
-                    className="delete-button"
-                    id={favorite.id}
-                    key={`${favorite.id}-button`}
-                  >
-                    x
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className="show-song">
-          <h2 className="title">{this.state.song.artist}</h2>
-          <h3 className="title">{this.state.song.title}</h3>
-          {this.state.song.lyrics.map((row, i) => {
+  const clearSong = () => {
+    setSongArtist("");
+    setSongTitle("");
+    setSongLyrics([]);
+  };
+
+  return (
+    <div>
+      <div className="favorites-page">
+        <div className="favorites-section">
+          <h2 className="title">My Favorited Songs</h2>
+          {favorites.map((favorite) => {
             return (
-              <p className="lyric-row" key={i} id={`lyric${row}`}>
-                {row}{" "}
-              </p>
+              <div key={favorite.id}>
+                <a
+                  onClick={showSong}
+                  className="song-link"
+                  key={`${favorite.id}+button`}
+                  id={favorite.id}
+                >
+                  {favorite.artist} - {favorite.title}
+                </a>
+                <button
+                  onClick={removeSong}
+                  className="delete-button"
+                  id={favorite.id}
+                  key={`${favorite.id}-button`}
+                >
+                  x
+                </button>
+              </div>
             );
           })}
-          {this.state.song.lyrics.length > 0 ? (
-            <button onClick={this.clearSong} className="clear-button">
-              Hide
-            </button>
-          ) : null}
         </div>
       </div>
-    );
-  }
+      <div className="show-song">
+        <h2 className="title">{songArtist}</h2>
+        <h3 className="title">{songTitle}</h3>
+        {songLyrics.map((row, i) => {
+          return (
+            <p className="lyric-row" key={i} id={`lyric${row}`}>
+              {row}{" "}
+            </p>
+          );
+        })}
+        {songLyrics.length > 0 ? (
+          <button onClick={clearSong} className="clear-button">
+            Hide
+          </button>
+        ) : null}
+      </div>
+    </div>
+  );
 }

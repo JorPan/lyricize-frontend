@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { defineWordKey } from "../config";
 const apiKey = defineWordKey;
 const definitionURL = "https://wordsapiv1.p.rapidapi.com/words";

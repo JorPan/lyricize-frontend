@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useCallback } from "react";
 import "../styling/Favorites.css";
 
+const favoritesURL = "http://localhost:3000/favorites";
+
 export default function Favorites() {
   const [favorites, setFavorites] = useState([]);
   const [songArtist, setSongArtist] = useState("");
@@ -8,17 +10,17 @@ export default function Favorites() {
   const [songLyrics, setSongLyrics] = useState([]);
 
   const fetchFavorites = useCallback(() => {
-    fetch("http://localhost:3000/favorites")
+    fetch(favoritesURL)
       .then((response) => response.json())
       .then((favorites) => setFavorites(favorites));
-  });
+  }, [setFavorites]);
 
   useEffect(() => {
     fetchFavorites();
   }, [fetchFavorites]);
 
   const removeSong = (event) => {
-    fetch(`http://localhost:3000/favorites/${event.target.id}`, {
+    fetch(`${favoritesURL}/${event.target.id}`, {
       method: "DELETE",
     }).then(() => {
       fetchFavorites();
@@ -26,7 +28,7 @@ export default function Favorites() {
   };
 
   const showSong = (event) => {
-    fetch(`http://localhost:3000/favorites/${event.target.id}`)
+    fetch(`${favoritesURL}/${event.target.id}`)
       .then((response) => response.json())
       .then((song) => {
         setSongArtist(song.artist);
@@ -48,15 +50,15 @@ export default function Favorites() {
           <h2 className="title">My Favorited Songs</h2>
           {favorites.map((favorite) => {
             return (
-              <div key={favorite.id}>
-                <a
+              <div className="song-list" key={favorite.id}>
+                <p
                   onClick={showSong}
                   className="song-link"
                   key={`${favorite.id}+button`}
                   id={favorite.id}
                 >
                   {favorite.artist} - {favorite.title}
-                </a>
+                </p>
                 <button
                   onClick={removeSong}
                   className="delete-button"

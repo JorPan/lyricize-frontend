@@ -4,7 +4,7 @@
 
 Lyricize is a web app designed for song writers to write better lyrics. 
 
-The main feature is a helper tool that can generate random words or genres for inspiration, and has 14 stackable inputs to find rhymes, alliterations, similies, etc. 
+The main feature is a helper tool that can generate random words or genres for inspiration, and has 14 stackable inputs to find rhymes, alliterations, similes, etc. 
 
 ## Demo Video
 [Lyricize Demo Video](https://www.youtube.com/watch?v=xNXhS0R3J9k&feature=youtu.be)

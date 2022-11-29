@@ -12,7 +12,7 @@ The main feature is a helper tool that can generate random words or genres for i
 
 ## Inspiration
 
-Writing lyrics has always been really difficult, so I wanted to make a tool that could help people write better lyrics. 
+Writing lyrics and/or poetry has always been really difficult, so I wanted to make a tool that could help people write better lyrics. 
 
 ## Technologies
 

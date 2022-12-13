@@ -27,7 +27,7 @@ Writing lyrics and/or poetry has always been really difficult, so I wanted to ma
 ## Setup
 
 Back-end (https://github.com/JorPan/lyricize-backend)
-- To access this app currently, users must clone the [back-end Github repository](https://github.com/JorPan/lyricize-backend) and open it in their code editor.
+- To access this app, users must clone the [back-end Github repository](https://github.com/JorPan/lyricize-backend) and open it in their code editor.
 - Install the Ruby gems by running "bundle install".
 - Create your local database by running "rails db:create && rails db:migrate".
 - Seed the database by running "rails db:seed".

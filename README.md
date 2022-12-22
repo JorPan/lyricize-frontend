@@ -2,7 +2,7 @@
 
 - Get the back-end end here: https://github.com/JorPan/lyricize-backend
 
-Lyricize is a web app designed for song writers to write better lyrics. 
+Lyricize is a web app designed to help song writers to write better lyrics. 
 
 The main feature is a helper tool that can generate random words or genres for inspiration, and has 14 stackable inputs to find rhymes, alliterations, similes, etc. 
 
